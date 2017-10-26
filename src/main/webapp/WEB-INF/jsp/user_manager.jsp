@@ -25,10 +25,66 @@
 	</table>
 	
 	<div id="toolbar">
-		<a class="easyui-linkbutton" iconCls="icon-add">添加</a>
+		<a onclick="add()" class="easyui-linkbutton" iconCls="icon-add">添加</a>
 		<a class="easyui-linkbutton" iconCls="icon-edit">修改</a>
 		<a class="easyui-linkbutton" iconCls="icon-remove">删除</a>
 	</div>
-
+	
+	<!-- 添加用户弹窗 -->
+	<div id="addDialog" style="display:none;padding:5px;width:400px;height:300px;" title="添加用户"> 
+		<form id="ff" method="post">   
+		    <div>   
+		        <label for="name">用户名</label>   
+		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+		    </div>
+		    <div>   
+		        <label for="name">密码</label>   
+		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+		    </div> 
+		    <div>   
+		        <label for="name">确认密码</label>   
+		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+		    </div> 
+		    <div>   
+		        <label for="name">真实姓名</label>   
+		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+		    </div>    
+		    <div>   
+		        <label for="email">邮件</label>   
+		        <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'" />   
+		    </div>
+		    <div>   
+		        <label for="name">联系电话</label>   
+		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+		    </div> 
+		    <div>   
+		        <label for="name">角色</label>   
+		        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+		    </div>       
+		</form>  
+	</div> 
 </body>
 </html>
+
+<script type="text/javascript">
+	function add() { 
+		$('#addDialog').show(); 
+		$('#addDialog').dialog({ 
+		collapsible: true, 
+		minimizable: true, 
+		maximizable: true, 
+		buttons: [{ 
+		text: '添加', 
+		iconCls: 'icon-add', 
+		handler: function() { 
+			alert('添加成功'); 
+		} 
+		}, { 
+		text: '取消', 
+		handler: function() { 
+			$('#addDialog').dialog('close'); 
+		} 
+		}] 
+		}); 
+		} 
+</script>

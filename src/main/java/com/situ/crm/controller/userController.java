@@ -19,6 +19,11 @@ public class userController {
 		return "user_manager";
 	}
 	
+	@RequestMapping("/getAddPage")
+	public String getAddPage(){
+		return "user_add";
+	}
+	
 	@RequestMapping("/findAll")
 	@ResponseBody
 	public EasyUIDataGrideResult findAll(Integer page, Integer rows) {

@@ -15,3 +15,4 @@
 <link rel="stylesheet" href="${path}/resources/thirdlib/jquery-easyui/themes/icon.css"/>
 <script type="text/javascript" src="${path}/resources/thirdlib/jquery-easyui/jquery.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="${path}/resources/thirdlib/jquery-easyui/jquery.easyui.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="${path}/resources/thirdlib/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
