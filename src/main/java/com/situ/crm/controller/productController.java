@@ -7,46 +7,46 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
-import com.situ.crm.pojo.User;
-import com.situ.crm.service.IUserService;
+import com.situ.crm.pojo.Product;
+import com.situ.crm.service.IProductService;
 
 @Controller
-@RequestMapping("/user")
-public class userController {
+@RequestMapping("/product")
+public class productController {
 	@Autowired
-	private IUserService userService;
+	private IProductService productService;
 	
 	@RequestMapping("/index")
 	public String index(){
-		return "user_manager";
+		return "product_manager";
 	}
 	
 	@RequestMapping("/getAddPage")
 	public String getAddPage(){
-		return "user_add";
+		return "product_add";
 	}
 	
 	@RequestMapping("/findAll")
 	@ResponseBody
-	public EasyUIDataGrideResult findAll(Integer page, Integer rows, User user) {
-		return userService.findAll(page, rows, user);
+	public EasyUIDataGrideResult findAll(Integer page, Integer rows, Product product) {
+		return productService.findAll(page, rows, product);
 	}
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public ServerResponse add(User user){
-		return userService.add(user);
+	public ServerResponse add(Product product){
+		return productService.add(product);
 	}
 	
 	@RequestMapping("/delete")
 	@ResponseBody
 	public ServerResponse delete(String ids){
-		return userService.delete(ids);
+		return productService.delete(ids);
 	}
 	
 	@RequestMapping("/update")
 	@ResponseBody
-	public ServerResponse update(User user) {
-		return userService.update(user);
+	public ServerResponse update(Product product) {
+		return productService.update(product);
 	}
 }

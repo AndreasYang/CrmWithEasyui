@@ -31,8 +31,8 @@
 				<a href="javascript:openTab('客户流失分析','khlsfx.jsp','icon-khlsfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsfx'" style="width: 100%;">客户流失分析</a>
 			</div>
 			<div title="基础数据管理" data-options="iconCls:'icon-tjbb'">
-				<a href="javascript:openTab('数据字典管理','dataDicManage.jsp','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 100%;">数据字典管理</a>
-				<a href="javascript:openTab('产品信息查询','productSearch.jsp','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 100%;">产品信息查询</a>
+				<a href="javascript:openTab('数据字典管理','${path}/dataDic/index.action','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 100%;">数据字典管理</a>
+				<a href="javascript:openTab('产品信息查询','${path}/product/index.action','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 100%;">产品信息查询</a>
 				<a href="javascript:openTab('用户信息管理','${path}/user/index.action','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 100%;">用户信息管理</a>
 			</div>
 			<div title="系统管理" data-options="iconCls:'icon-item'">

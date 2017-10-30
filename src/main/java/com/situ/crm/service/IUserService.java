@@ -6,7 +6,7 @@ import com.situ.crm.pojo.User;
 
 public interface IUserService {
 
-	EasyUIDataGrideResult findAll(Integer page, Integer rows);
+	EasyUIDataGrideResult findAll(Integer page, Integer rows, User user);
 
 	ServerResponse add(User user);
 
