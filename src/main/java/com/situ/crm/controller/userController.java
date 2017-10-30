@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
+import com.situ.crm.common.ServerResponse;
+import com.situ.crm.pojo.User;
 import com.situ.crm.service.IUserService;
 
 @Controller
@@ -30,4 +32,21 @@ public class userController {
 		return userService.findAll(page, rows);
 	}
 	
+	@RequestMapping("/add")
+	@ResponseBody
+	public ServerResponse add(User user){
+		return userService.add(user);
+	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public ServerResponse delete(String ids){
+		return userService.delete(ids);
+	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public ServerResponse update(User user) {
+		return userService.update(user);
+	}
 }

@@ -10,6 +10,7 @@
      var path="${pageContext.request.contextPath}";  
 </script>
 
+<script type="text/javascript" src="${path}/resources/js/common.js"></script>
 
 <link rel="stylesheet" href="${path}/resources/thirdlib/jquery-easyui/themes/default/easyui.css"/>
 <link rel="stylesheet" href="${path}/resources/thirdlib/jquery-easyui/themes/icon.css"/>
