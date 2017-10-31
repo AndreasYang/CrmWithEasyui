@@ -75,7 +75,7 @@
 	/* 查找 */
 	function doSearch(){
 		$("#datagrid").datagrid("load",{
-			'dataDicName':$("#dataDicName").val(),
+			'dataDicName':$("#sdataDicName").val(),
 			'dataDicValue':$("#dataDicValue").val()
 		})
 	}
@@ -138,7 +138,7 @@
 		<a href="javascript:openUpdateDialog()" class="easyui-linkbutton" iconCls="icon-edit">修改</a>
 		<a href="javascript:doDelete()" class="easyui-linkbutton" iconCls="icon-remove">删除</a>
 		&nbsp;&nbsp;|&nbsp;&nbsp;
-		数据字典名：<input type="text" id="dataDicName" class="easyui-combobox"
+		数据字典名：<input type="text" id="sdataDicName" class="easyui-combobox"
 					 data-options="
 					 	url:'${path}/dataDic/findDataDicName.action',
 					 	valueField: 'dataDicName',
@@ -156,7 +156,7 @@
 				<tr>
 					<td>数据字典名称：</td>
 					<td>
-						<input type="text" id="dataDicName" class="easyui-combobox"
+						<input type="text" id="dataDicName" name="dataDicName" class="easyui-combobox"
 							 data-options="
 							 	url:'${path}/dataDic/findDataDicName.action',
 							 	valueField: 'dataDicName',

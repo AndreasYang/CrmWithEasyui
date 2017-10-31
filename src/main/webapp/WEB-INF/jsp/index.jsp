@@ -13,7 +13,11 @@
 	</div>
 	<div data-options="region:'west'" title="West" style="width:15%;">
 		<div class="easyui-accordion" data-optiopns="border:false,fit:true">
-			<div title="学生管理" data-options="iconCls:'icon-user'">
+			<div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'">
+				<a href="javascript:openTab('营销机会管理','${path}/saleChance/index.action','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 100%">营销机会管理</a> 
+				<a href="javascript:openTab('客户开发计划','cusdevplanManage.jsp','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 100%">客户开发计划</a>
+			</div>
+			<div title="客户管理" data-options="iconCls:'icon-user'">
 				<a href="javascript:openTab('客户信息管理','customerManage.jsp','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 100%;">客户信息管理</a>
 				<a href="javascript:openTab('客户流失管理','customerLossManage.jsp','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 100%;">客户流失管理</a>
 			</div>
