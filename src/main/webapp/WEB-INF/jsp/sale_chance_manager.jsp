@@ -32,14 +32,24 @@
 				     {field:'createTime',title:'创建时间',width:100,align:'center'},
 				     {field:'assignMan',title:'指派人',width:80,align:'center'},
 				     {field:'assignTime',title:'指派时间',width:100,align:'center'},
-				     {field:'status',title:'分配状态',width:80,align:'center',formatter:function(){
+				     {field:'status',title:'分配状态',width:80,align:'center',formatter:function(value,row,index){
 				    	 	if(value==1){
 				    	 		return "已分配";
 				    	 	}else{
 				    	 		return "未分配";
 				    	 	}
 				     }},
-				     {field:'devResult',title:'客户开发状态',width:80,align:'center'},
+				     {field:'devResult',title:'客户开发状态',width:80,align:'center',formatter:function(value,row,index){
+				    	 	if(value==0){
+				    	 		return "未开发";
+				    	 	}if(value==1){
+				    	 		return "开发中";
+				    	 	}if(value==2){
+				    	 		return "开发成功";
+				    	 	}else{
+				    	 		return "开发失败";
+				    	 	}
+				     }},
 				]]
 		});
 		
@@ -65,6 +75,8 @@
 					]
 		});
 	});
+	
+	
 	/* 删除 */
 	function doDelete(){
 		var ids = Util.getSelectionsIds("#datagrid");
@@ -103,7 +115,7 @@
 	/* 打开添加dialog */
 	function openAddDialog() {
 		$("#dialog").dialog("open").dialog("setTitle","添加信息");
-		url = "${path}/dataDic/add.action";
+		url = "${path}/saleChance/add.action";
 		$('#form').form("clear");
 		
 	}
@@ -121,7 +133,7 @@
 		}
 		var row = selections[0];
 		$("#dialog").dialog("open").dialog("setTitle","修改信息");
-		url = "${path}/dataDic/update.action";
+		url = "${path}/saleChance/update.action";
 		$('#form').form("load", row);
 	}
 	
@@ -129,10 +141,6 @@
 		$('#form').form('submit', {    
 		    url:url,    
 		    onSubmit: function(){    
-		    	 if($("#dataDicName").combobox("getValue") == "") {
-			        	$.messager.alert("系统提示", "数据字典名");
-			        	return false;
-			        }
 			        return $(this).form("validate");
 		    },    
 		    success:function(data){//正常返回ServerResponse
@@ -212,7 +220,7 @@
 					<td><input class="easyui-textbox" id="createMan" name="createMan" class="easyui-combobox"required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>创建时间：</td>
-					<td><input class="easyui-textbox" id="createTime" name="createTime" class="easyui-validatebox" required="true"/></td>
+					<td><input class="easyui-textbox" id="createTime" name="createTime" class="easyui-validatebox"/></td>
 				</tr>
 				<tr>
 					<td>指派给：</td>
