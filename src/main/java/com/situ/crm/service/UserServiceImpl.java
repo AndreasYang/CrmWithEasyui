@@ -69,4 +69,9 @@ public class UserServiceImpl implements IUserService {
 		return ServerResponse.createError("修改失败!");
 	}
 
+	@Override
+	public User findUserByNameAndPassword(String name, String password) {
+		return userMapper.findUserByNameAndPassword(name, password);
+	}
+
 }

@@ -93,4 +93,6 @@ public interface UserMapper {
      * @mbggenerated Mon Oct 30 14:01:59 CST 2017
      */
     int updateByPrimaryKey(User record);
+
+	User findUserByNameAndPassword(@Param(value="name")String name, @Param(value="password")String password);
 }

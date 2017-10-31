@@ -107,7 +107,7 @@
 			'customerName':$("#scustomerName").val(),
 			'overview':$("#soverview").val(),
 			'createMan':$("#screateMan").val(),
-			'status':$("#sstatus").val()
+			'status':$("#sstatus").val(),
 		})
 	}
 
@@ -171,7 +171,8 @@
 			客户名称：<input class="easyui-textbox" id="scustomerName"/>
 			概要：<input class="easyui-textbox" id="soverview">
 			创建人：<input class="easyui-textbox" id="screateMan">
-			分配状态：<select class="easyui-combobox" id="sstatus" editable="false" style="width:160">
+			创建时间：<input class="easyui-datetimebox" id="screateTime" style="width:200px">
+			分配状态：<select class="easyui-combobox" id="sstatus" style="width:80px">
 							<option></option>
 							<option value="0">未分配</option>
 							<option value="1">已分配</option>

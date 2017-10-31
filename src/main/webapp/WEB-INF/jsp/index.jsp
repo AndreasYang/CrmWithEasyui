@@ -9,7 +9,14 @@
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north'" style="height: 70px">
-		
+		<table style="padding: 5px" width="100%">
+			<tr>
+				<td width="50%"><img alt="logo"
+					src="${pageContext.request.contextPath}/images/bglogo.png"></td>
+				<td valign="bottom" align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>欢迎：${user.name}</strong></font>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div data-options="region:'west'" title="West" style="width:15%;">
 		<div class="easyui-accordion" data-optiopns="border:false,fit:true">

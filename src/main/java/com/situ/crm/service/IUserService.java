@@ -14,4 +14,6 @@ public interface IUserService {
 
 	ServerResponse update(User user);
 
+	User findUserByNameAndPassword(String name, String password);
+
 }

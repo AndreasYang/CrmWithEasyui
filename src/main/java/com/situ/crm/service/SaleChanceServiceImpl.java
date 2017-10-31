@@ -39,6 +39,12 @@ public class SaleChanceServiceImpl implements ISaleChanceService {
 		if (StringUtils.isNotEmpty(saleChance.getCreateMan())) {
 			createCriteria.andCreateManLike(Util.formatLike(saleChance.getCreateMan()));
 		}
+		/*if (saleChance.getCreateTime() != null) {
+			createCriteria.andCreateTimeEqualTo(saleChance.getCreateTime());
+		}*/
+		if (saleChance.getStatus() != null) {
+			createCriteria.andStatusEqualTo(saleChance.getStatus());
+		}
 		
 		List<SaleChance> saleChanceList = saleChanceMapper.selectByExample(saleChanceExample);
 		

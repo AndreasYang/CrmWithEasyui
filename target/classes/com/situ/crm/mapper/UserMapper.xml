@@ -315,4 +315,8 @@
       role_name = #{roleName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+	<select id="findUserByNameAndPassword" resultMap="BaseResultMap">
+		SELECT * FROM user WHERE name=#{name} AND password=#{password}
+	</select>
 </mapper>
