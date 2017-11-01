@@ -75,4 +75,13 @@ public class UserServiceImpl implements IUserService {
 		return userMapper.findUserByNameAndPassword(name, password);
 	}
 
+	@Override
+	public List<User> getCustomerManagerList() {
+		UserExample userExample =  new UserExample();
+		Criteria createCriteria = userExample.createCriteria();
+		createCriteria.andRoleNameEqualTo("客户经理");
+		List<User> userList = userMapper.selectByExample(userExample);
+		return userList;
+	}
+
 }

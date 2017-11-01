@@ -92,6 +92,11 @@ public class SaleChanceServiceImpl implements ISaleChanceService {
 
 	@Override
 	public ServerResponse add(SaleChance saleChance) {
+		if(StringUtils.isNotEmpty(saleChance.getAssignMan())){
+			saleChance.setStatus(1);//已分配
+		}else{
+			saleChance.setStatus(0);//0：:未分配
+		}
 		if (saleChanceMapper.insert(saleChance) > 0) {
 			return ServerResponse.createSuccess("添加成功");
 		}
@@ -109,6 +114,11 @@ public class SaleChanceServiceImpl implements ISaleChanceService {
 
 	@Override
 	public ServerResponse update(SaleChance saleChance) {
+		if(StringUtils.isNotEmpty(saleChance.getAssignMan())){
+			saleChance.setStatus(1);//已分配
+		}else{
+			saleChance.setStatus(0);//0：:未分配
+		}
 		if (saleChanceMapper.updateByPrimaryKey(saleChance) > 0) {
 			return ServerResponse.createSuccess("修改成功! ");
 		}

@@ -63,6 +63,19 @@
 						
 					]
 		});
+		
+		$(function(){
+			$("#assignMan").combobox({
+				onSelect:function(record){
+					if(record.trueName!=''){
+						$("#assignTime").val(Util.getCurrentDateTime());
+					}else{
+						$("#assignTime").val("");
+					}
+				}
+			}); 
+		 });	
+		
 	});
 	
 	
@@ -215,20 +228,20 @@
 					<td><input type="text" id="linkPhone" name="linkPhone" required="true"/></td>
 				</tr>
 				<tr>
-					<td>成功机率：</td>
-					<td><input type="text" class="easyui-numberbox" id="successRate" name="successRate"/></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				</tr>
-				<tr>
-					<td>概要：</td>
-					<td><input type="text" id="overview" name="overview" /></td>
-				</tr>
-				<tr>
-					<td>机会描述：</td>
-					<td><input type="text" data-options="multiline:true" id="description" name="description" style="height:100px"/></td>
-				</tr>
+		   			<td>成功几率(%)：</td>
+		   			<td><input type="text" id="successRate" name="successRate" class="easyui-numberbox" data-options="min:0,max:100" required="true"/>&nbsp;<font color="red">*</font></td>
+		   			<td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		   		</tr>
+		   		<tr>
+		   			<td>概要：</td>
+		   			<td colspan="4"><input type="text" id="overview" name="overview" style="width: 420px"/></td>
+		   		</tr>
+		   		<tr>
+		   			<td>机会描述：</td>
+		   			<td colspan="4">
+		   				<textarea rows="5" cols="50" id="description" name="description"></textarea>
+		   			</td>
+		   		</tr>
 				<tr>
 					<td>创建人：</td>
 					<!-- <td><input type="text" id="createMan" name="createMan" required="true"/></td> -->
@@ -239,7 +252,9 @@
 				</tr>
 				<tr>
 					<td>指派给：</td>
-					<td><input type="text" id="assignMan" name="assignMan"/></td>
+					<td><input class="easyui-combobox" id="assignMan" name="assignMan" data-options="panelHeight:'auto',
+							valueField:'trueName',textField:'trueName',
+							url:'${path}/user/getCustomerManagerList.action'"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>指派时间：</td>
 					<td><input type="text" id="assignTime" name="assignTime"/></td>

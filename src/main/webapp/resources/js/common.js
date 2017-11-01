@@ -39,7 +39,7 @@ var Util = {
 		
 		 //获取当前时间并格式化
 		getCurrentDateTime : function(){
-			var date = new date();
+			var date = new Date();
 			var year = date.getFullYear();
 			var month = date.getMonth()+1;
 			var day=date.getDate();
