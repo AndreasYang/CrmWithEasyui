@@ -1,4 +1,4 @@
-package com.situ.crm.service;
+package com.situ.crm.service.ipml;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import com.situ.crm.mapper.DataDicMapper;
 import com.situ.crm.pojo.DataDic;
 import com.situ.crm.pojo.DataDicExample;
 import com.situ.crm.pojo.DataDicExample.Criteria;
+import com.situ.crm.service.IDataDicService;
 import com.situ.crm.util.Util;
 
 @Service

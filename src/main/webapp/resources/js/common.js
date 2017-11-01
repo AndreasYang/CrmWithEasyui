@@ -28,5 +28,27 @@ var Util = {
 			return "";
 		},
 		
+		// 在0-9的时间日期前面补0
+		formatZero: function(n){
+			 if(n>=0&&n<=9){
+				 return "0"+n;
+			 }else{
+				 return n;
+			 }
+		 },
+		
+		 //获取当前时间并格式化
+		getCurrentDateTime : function(){
+			var date = new date();
+			var year = date.getFullYear();
+			var month = date.getMonth()+1;
+			var day=date.getDate();
+			var hours=date.getHours();
+			var minutes=date.getMinutes();
+			var seconds=date.getSeconds();
+			
+			return year+"-"+this.formatZero(month)+"-"+this.formatZero(day)+" "+this.formatZero(hours)+":"+this.formatZero(minutes)+":"+this.formatZero(seconds);
+		},
+		
 		
 }

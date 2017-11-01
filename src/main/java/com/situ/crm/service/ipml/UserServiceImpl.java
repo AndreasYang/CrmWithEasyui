@@ -1,4 +1,4 @@
-package com.situ.crm.service;
+package com.situ.crm.service.ipml;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import com.situ.crm.mapper.UserMapper;
 import com.situ.crm.pojo.User;
 import com.situ.crm.pojo.UserExample;
 import com.situ.crm.pojo.UserExample.Criteria;
+import com.situ.crm.service.IUserService;
 import com.situ.crm.util.Util;
 
 @Service

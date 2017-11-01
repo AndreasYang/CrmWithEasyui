@@ -28,11 +28,9 @@
 				     {field:'linkMan',title:'联系人',width:80,align:'center'},
 				     {field:'linkPhone',title:'联系电话',width:100,align:'center'},
 				     {field:'description',title:'机会描述',width:80,align:'center'},
-				     {field:'createMan',title:'创建人',width:80,align:'center'},
-				     {field:'createTime',title:'创建时间',width:100,align:'center'},
 				     {field:'assignMan',title:'指派人',width:80,align:'center'},
 				     {field:'assignTime',title:'指派时间',width:100,align:'center'},
-				     {field:'status',title:'分配状态',width:80,align:'center',formatter:function(value,row,index){
+				     {field:'devResult',title:'',width:80,align:'center',formatter:function(value,row,index){
 				    	 	if(value==1){
 				    	 		return "已分配";
 				    	 	}else{
@@ -97,8 +95,6 @@
 			'overview':$("#soverview").val(),
 			'createMan':$("#screateMan").val(),
 			'status':$("#sstatus").val(),
-			'sstartDate':$("#sstartDate").val(),
-			'sendDate':$("#sendDate").val()
 		})
 	}
 
@@ -109,7 +105,6 @@
 		url = "${path}/saleChance/add.action";
 		$('#form').form("clear");
 		$("#createMan").val("${user.name}");
-		$("#createTime").val(Util.getCurrentDateTime());
 		
 	}
 	
@@ -146,25 +141,6 @@
 		    }    
 		});  
 	}
-	
-	function myformatter(date){
-		var y = date.getFullYear();
-		var m = date.getMonth()+1;
-		var d = date.getDate();
-		return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
-	}
-	function myparser(s){
-		if (!s) return new Date();
-		var ss = (s.split('-'));
-		var y = parseInt(ss[0],10);
-		var m = parseInt(ss[1],10);
-		var d = parseInt(ss[2],10);
-		if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
-			return new Date(y,m-1,d);
-		} else {
-			return new Date();
-		}
-	}
 </script>
 
 </head>
@@ -180,11 +156,10 @@
 		</div>
 		<!-- 搜索 -->
 		<div>
-			客户名称：<input type="text" id="scustomerName"/>
-			概要：<input type="text" id="soverview">
-			创建人：<input type="text" id="screateMan">
-			创建开始时间：<input class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" id="sstartDate" name="sstartDate" style="width:100px">
-			创建结束时间：<input class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" id="sendDate" name="sendDate" style="width:100px">
+			客户名称：<input class="easyui-textbox" id="scustomerName"/>
+			概要：<input class="easyui-textbox" id="soverview">
+			创建人：<input class="easyui-textbox" id="screateMan">
+			创建时间：<input class="easyui-datetimebox" id="screateTime" style="width:200px">
 			分配状态：<select class="easyui-combobox" id="sstatus" style="width:80px">
 							<option></option>
 							<option value="0">未分配</option>
@@ -202,47 +177,47 @@
 			<table cellspacing="8px">
 				<tr>
 					<td>客户名称：</td>
-					<td><input type="text" id="customerName" name="customerName" required="true"/></td>
+					<td><input class="easyui-textbox" id="customerName" name="customerName" required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>机会来源：</td>
-					<td><input type="text" id="chanceSource" name="chanceSource" required="true"/></td>
+					<td><input class="easyui-textbox" id="chanceSource" name="chanceSource" required="true"/></td>
 				</tr>
 				<tr>
 					<td>联系人：</td>
-					<td><input type="text" id="linkMan" name="linkMan" required="true"/></td>
+					<td><input class="easyui-textbox" id="linkMan" name="linkMan" required="true"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>联系电话：</td>
-					<td><input type="text" id="linkPhone" name="linkPhone" required="true"/></td>
+					<td><input class="easyui-textbox" id="linkPhone" name="linkPhone" required="true"/></td>
 				</tr>
 				<tr>
 					<td>成功机率：</td>
-					<td><input type="text" class="easyui-numberbox" id="successRate" name="successRate"/></td>
+					<td><input class="easyui-textbox" id="successRate" name="successRate"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
 					<td>概要：</td>
-					<td><input type="text" id="overview" name="overview" /></td>
+					<td><input class="easyui-textbox" id="overview" name="overview" /></td>
 				</tr>
 				<tr>
 					<td>机会描述：</td>
-					<td><input type="text" data-options="multiline:true" id="description" name="description" style="height:100px"/></td>
+					<td><input class="easyui-textbox" data-options="multiline:true" id="description" name="description" style="height:100px"/></td>
 				</tr>
 				<tr>
 					<td>创建人：</td>
-					<!-- <td><input type="text" id="createMan" name="createMan" required="true"/></td> -->
-					<td><input type="text" editable="false" id="createMan" name="createMan" class="easyui-validatebox" required="true"/></td>
+					<!-- <td><input class="easyui-textbox" id="createMan" name="createMan" required="true"/></td> -->
+					<td><input type="text" editable="false" id="createMan" name="createMan" class="easyui-validatebox" required="true"/>&nbsp;<font color="red">*</font></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>创建时间：</td>
-					<td><input type="text" readonly="true" id="createTime" name="createTime"/></td>
+					<td><input class="easyui-textbox" id="createTime" name="createTime"/></td>
 				</tr>
 				<tr>
 					<td>指派给：</td>
-					<td><input type="text" id="assignMan" name="assignMan"/></td>
+					<td><input class="easyui-textbox" id="assignMan" name="assignMan"/></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>指派时间：</td>
-					<td><input type="text" id="assignTime" name="assignTime"/></td>
+					<td><input class="easyui-textbox" id="assignTime" name="assignTime"/></td>
 				</tr>
 			</table>
 		</form>
