@@ -97,6 +97,7 @@ public class SaleChanceServiceImpl implements ISaleChanceService {
 		}else{
 			saleChance.setStatus(0);//0：:未分配
 		}
+		saleChance.setDevResult(0);
 		if (saleChanceMapper.insert(saleChance) > 0) {
 			return ServerResponse.createSuccess("添加成功");
 		}
@@ -123,6 +124,15 @@ public class SaleChanceServiceImpl implements ISaleChanceService {
 			return ServerResponse.createSuccess("修改成功! ");
 		}
 		return ServerResponse.createError("修改失败!");
+	}
+
+	@Override
+	public ServerResponse findById(Integer id) {
+		SaleChance saleChance = saleChanceMapper.selectByPrimaryKey(id);
+		if (saleChance != null) {
+			return ServerResponse.createSuccess("查找成功! ", saleChance);
+		}
+		return ServerResponse.createError("查找失败!");
 	}
 
 	

@@ -86,4 +86,9 @@ public class saleChanceController {
 		return saleChanceService.update(saleChance);
 	}
 	
+	@RequestMapping("/findById")
+	@ResponseBody
+	public ServerResponse findById(Integer id){
+		return saleChanceService.findById(id);
+	}
 }

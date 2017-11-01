@@ -18,4 +18,6 @@ public interface ISaleChanceService {
 
 	EasyUIDataGrideResult findAllWithoutDate(Integer page, Integer rows, SaleChance saleChance);
 
+	ServerResponse findById(Integer id);
+
 }

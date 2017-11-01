@@ -89,7 +89,7 @@
 		$.messager.confirm("系统提示", "您确认要删除么", function(r){
 			if (r){
 				$.post(
-					"${path}/dataDic/delete.action",
+					"${path}/saleChance/delete.action",
 					{ids:ids}, 
 					function(result) {
 						$.messager.alert("系统提示", result.msg);

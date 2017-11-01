@@ -84,7 +84,7 @@ public class SaleChance {
      * @mbggenerated Mon Oct 30 14:01:59 CST 2017
      */
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm")
     private Date createTime;
 
     /**
