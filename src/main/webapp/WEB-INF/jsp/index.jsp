@@ -25,7 +25,7 @@
 				<a href="javascript:openTab('客户开发计划','${path}/saleChance/cusDevPlan.action','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 100%">客户开发计划</a>
 			</div>
 			<div title="客户管理" data-options="iconCls:'icon-user'">
-				<a href="javascript:openTab('客户信息管理','customerManage.jsp','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 100%;">客户信息管理</a>
+				<a href="javascript:openTab('客户信息管理','${path}/customer/index.action','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 100%;">客户信息管理</a>
 				<a href="javascript:openTab('客户流失管理','customerLossManage.jsp','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 100%;">客户流失管理</a>
 			</div>
 			<div title="服务管理" data-options="iconCls:'icon-sjzdlbgl'">
