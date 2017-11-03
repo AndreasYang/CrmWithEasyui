@@ -11,8 +11,7 @@
 	<div data-options="region:'north'" style="height: 70px">
 		<table style="padding: 5px" width="100%">
 			<tr>
-				<td width="50%"><img alt="logo"
-					src="${pageContext.request.contextPath}/images/bglogo.png"></td>
+				<td width="50%"></td>
 				<td valign="bottom" align="right" width="50%"><font size="3">&nbsp;&nbsp;<strong>欢迎：${user.name}</strong></font>
 				</td>
 			</tr>

@@ -1,5 +1,7 @@
 package com.situ.crm.service.ipml;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -34,6 +36,9 @@ public class CustomerServiceImpl implements ICustomerService {
 		if (StringUtils.isNotEmpty(customer.getName())) {
 			createCriteria.andNameLike(Util.formatLike(customer.getName()));
 		}
+		if (StringUtils.isNotEmpty(customer.getNum())) {
+			createCriteria.andNumEqualTo(customer.getNum());
+		}
 		
 		List<Customer> customerList = customerMapper.selectByExample(customerExample);
 		
@@ -47,6 +52,10 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	@Override
 	public ServerResponse add(Customer customer) {
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+		String num = "KH"+simpleDateFormat.format(date);
+		customer.setNum(num);
 		if (customerMapper.insert(customer) > 0) {
 			return ServerResponse.createSuccess("添加成功");
 		}
@@ -68,6 +77,15 @@ public class CustomerServiceImpl implements ICustomerService {
 			return ServerResponse.createSuccess("修改成功! ");
 		}
 		return ServerResponse.createError("修改失败!");
+	}
+
+	@Override
+	public ServerResponse findCustomerById(Integer id) {
+		Customer customer = customerMapper.selectByPrimaryKey(id);
+		if (customer != null) {
+			return ServerResponse.createSuccess("查找成功", customer);
+		}
+		return ServerResponse.createError("查找失败");
 	}
 
 

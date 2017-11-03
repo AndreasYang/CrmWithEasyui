@@ -78,4 +78,13 @@ public class DataDicServiceImpl implements IDataDicService {
 		return dataDicMapper.findDataDicName();
 	}
 
+	@Override
+	public List<DataDic> getCustomerLevel() {
+		DataDicExample dataDicExample = new DataDicExample();
+		Criteria createCriteria = dataDicExample.createCriteria();
+		createCriteria.andDataDicNameEqualTo("客户等级");
+		List<DataDic> dataDicList = dataDicMapper.selectByExample(dataDicExample);
+		return dataDicList;
+	}
+
 }

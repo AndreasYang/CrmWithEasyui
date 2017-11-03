@@ -18,4 +18,6 @@ public interface ICusDevPlanService {
 
 	EasyUIDataGrideResult findAllWithoutDate(Integer page, Integer rows, CusDevPlan cusDevPlan);
 
+	ServerResponse deleteById(Integer id);
+
 }

@@ -1,5 +1,6 @@
 package com.situ.crm.service.ipml;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -68,7 +69,9 @@ public class CusDevPlanServiceImpl implements ICusDevPlanService {
 
 	@Override
 	public ServerResponse add(CusDevPlan cusDevPlan) {
-		
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+		String num = "KH"+simpleDateFormat.format(date);
 		if (cusDevPlanMapper.insert(cusDevPlan) > 0) {
 			return ServerResponse.createSuccess("添加成功");
 		}
@@ -93,6 +96,12 @@ public class CusDevPlanServiceImpl implements ICusDevPlanService {
 		return ServerResponse.createError("修改失败!");
 	}
 
-	
+	@Override
+	public ServerResponse deleteById(Integer id) {
+		if (cusDevPlanMapper.deleteByPrimaryKey(id) > 0) {
+			return ServerResponse.createSuccess("删除数据成功 ");
+		}
+		return ServerResponse.createSuccess("数据已经成功删除");
+	}
 
 }

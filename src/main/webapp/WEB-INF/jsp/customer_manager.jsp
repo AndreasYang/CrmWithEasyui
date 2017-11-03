@@ -95,7 +95,8 @@ $(function(){
 	/* 根据用户名查找 */
 	function doSearch(value){
 		$("#datagrid").datagrid("load",{
-			'name':value
+			'num':$("#snum").val(),
+			'name':$("#sname").val()
 		})
 	}
 
@@ -129,8 +130,12 @@ $(function(){
 		$('#form').form('submit', {    
 		    url:url,    
 		    onSubmit: function(){    
-		        if($("#roleName").combobox("getValue") == "") {
-		        	$.messager.alert("系统提示", "请选择用户角色");
+		        if($("#managerName").combobox("getValue") == "") {
+		        	$.messager.alert("系统提示", "请选择客户经理");
+		        	return false;
+		        }
+		        if($("#level").combobox("getValue") == "") {
+		        	$.messager.alert("系统提示", "请选择客户等级");
 		        	return false;
 		        }
 		        return $(this).form("validate");
@@ -145,6 +150,18 @@ $(function(){
 		    }    
 		});  
 	}
+	
+	function openCustomerLinkManTab(){
+		var id = $("#datagrid").datagrid("getSelected").id;
+		
+		 window.parent.openTab('联系人管理','${path}/customerLinkman/index.action?customerId='+id,'icon-jwjl');
+	}
+	function openCusDevPlanTab(id){
+		 window.parent.openTab('交往记录管理','${path}/cusDevPlan/index.action?saleChanceId='+id,'icon-jwjl');
+	}
+	function openCusDevPlanTab(id){
+		 window.parent.openTab('历史订单查看','${path}/cusDevPlan/index.action?saleChanceId='+id,'icon-jwjl');
+	}
 </script>
 
 </head>
@@ -153,47 +170,126 @@ $(function(){
 	
 	<!-- 表格按钮 -->
 	<div id="toolbar">
-		<a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add">添加</a>
-		<a href="javascript:openUpdateDialog()" class="easyui-linkbutton" iconCls="icon-edit">修改</a>
-		<a href="javascript:doDelete()" class="easyui-linkbutton" iconCls="icon-remove">删除</a>
-		&nbsp;&nbsp;|&nbsp;&nbsp;
-		<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" style="width:150px"></input>
+		<div>
+			<a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add">添加</a>
+			<a href="javascript:openUpdateDialog()" class="easyui-linkbutton" iconCls="icon-edit">修改</a>
+			<a href="javascript:doDelete()" class="easyui-linkbutton" iconCls="icon-remove">删除</a>
+			<a href="javascript:openCustomerLinkManTab()" class="easyui-linkbutton" iconCls="icon-jwjl">联系人管理</a>
+			<a href="javascript:openCusDevPlanTab()" class="easyui-linkbutton" iconCls="icon-jwjl">交往记录管理</a>
+			<a href="javascript:openCusDevPlanTab()" class="easyui-linkbutton" iconCls="icon-jwjl">历史订单查看</a>
+		</div>
+		<div>
+			<div>
+			客户编号：<input type="text" id="snum"/>
+			客户名称：<input type="text" id="sname">
+			<a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		</div>
+		</div>
 	</div>
 	
 	<!-- 弹窗 -->
 	<div id="dialog" class="easyui-dialog" closed="true"
-		style="width:550;height:300,padding: 10px 20px" buttons="#dialog-button">
+		style="width:800;height:300,padding: 10px 20px" buttons="#dialog-button">
 		<form action="" id="form" method="post">
 			<input type="hidden" id="id" name="id"/>
+			<input type="hidden" id="num" name="num"/>
 			<table cellspacing="8px">
 				<tr>
-					<td>用户名：</td>
-					<td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/></td>
+					<td>客户名称：</td>
+					<td><input type="text" id="name" name="name" class="easyui-validatebox"  /></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>密码：</td>
-					<td><input type="text" id="password" name="password" class="easyui-validatebox" required="true"/></td>
-				</tr>
-				<tr>
-					<td>真实姓名：</td>
-					<td><input type="text" id="trueName" name="trueName" class="easyui-validatebox" required="true"/></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>邮箱：</td>
-					<td><input type="text" id="email" name="email" class="easyui-validatebox" required="true" validType="email"/></td>
-				</tr>
-				<tr>
-					<td>联系电话：</td>
-					<td><input type="text" id="phone" name="phone" class="easyui-validatebox" required="true"/></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>用户角色：</td>
+					<td>地区：</td>
 					<td>
-						<select class="easyui-combobox" id="roleName" name="roleName" editable="false" style="width:160">
+						<select class="easyui-combobox" id="region" name="region" editable="false" style="width:162px" panelHeight="120px">
 							<option></option>
-							<option value="系统管理员">系统管理员</option>
-							<option value="销售主管">销售主管</option>
-							<option value="客户经理">客户经理</option>
-							<option value="高管">高管</option>
+							<option value="青岛">青岛</option>
+							<option value="北京">北京</option>
+							<option value="上海">上海</option>
+							<option value="深圳">深圳</option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+					<td>客户经理：</td>
+					<td><input class="easyui-combobox" id="managerName" name="managerName" data-options="panelHeight:'auto',
+							valueField:'trueName',textField:'trueName',
+							url:'${path}/user/getCustomerManagerList.action'"/></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>客户等级：</td>
+					<td><input class="easyui-combobox" id="level" name="level" data-options="panelHeight:'auto',
+							valueField:'dataDicValue',textField:'dataDicValue',
+							url:'${path}/dataDic/getCustomerLevel.action'"/></td>
+				</tr>
+				<tr>
+					<td>客户满意度：</td>
+					<td>
+						<select class="easyui-combobox" id="satisfy" name="satisfy" editable="false" style="width:162px" panelHeight="120px">
+							<option></option>
+							<option value="☆☆☆☆☆">☆☆☆☆☆</option>
+							<option value="☆☆☆☆">☆☆☆☆</option>
+							<option value="☆☆☆">☆☆☆</option>
+							<option value="☆☆">☆☆</option>
+							<option value="☆">☆</option>
+						</select>
+					</td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>客户信用度：</td>
+					<td>
+						<select class="easyui-combobox" id="credit" name="credit" editable="false" style="width:162px" panelHeight="120px">
+							<option></option>
+							<option value="☆☆☆☆☆">☆☆☆☆☆</option>
+							<option value="☆☆☆☆">☆☆☆☆</option>
+							<option value="☆☆☆">☆☆☆</option>
+							<option value="☆☆">☆☆</option>
+							<option value="☆">☆</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>邮政编码：</td>
+					<td><input type="text" id="postCode" name="postCode" class="easyui-validatebox"  /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>联系电话：</td>
+					<td><input type="text" id="phone" name="phone" class="easyui-validatebox"  /></td>
+				</tr>
+				<tr>
+					<td>传真：</td>
+					<td><input type="text" id="fax" name="fax" class="easyui-validatebox"  /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>网址：</td>
+					<td><input type="text" id="webSite" name="webSite" class="easyui-validatebox"  /></td>
+				</tr>
+				<tr>
+					<td>客户地址：</td>
+					<td colspan="4"><input type="text" id="address" name="address" class="easyui-validatebox" style="width: 400px"/></td>
+				</tr>
+				<tr>
+					<td>营业执照注册号：</td>
+					<td><input type="text" id="licenceNo" name="licenceNo" class="easyui-validatebox"  /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>法人：</td>
+					<td><input type="text" id="legalPerson" name="legalPerson" class="easyui-validatebox"  /></td>
+				</tr>
+				<tr>
+					<td>注册资金（万元）：</td>
+					<td><input type="text" id="bankroll" name="bankroll" class="easyui-validatebox"  /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>年营业额（万元）：</td>
+					<td><input type="text" id="turnover" name="turnover" class="easyui-validatebox"  /></td>
+				</tr>
+				<tr>
+					<td>开户银行：</td>
+					<td><input type="text" id="bankName" name="bankName" class="easyui-validatebox"  /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>开户账号：</td>
+					<td><input type="text" id="bankAccount" name="bankAccount" class="easyui-validatebox"  /></td>
+				</tr>
+				<tr>
+					<td>地税登记号：</td>
+					<td><input type="text" id="localTaxNo" name="localTaxNo" class="easyui-validatebox"  /></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td>国税登记号：</td>
+					<td><input type="text" id="nationalTaxNo" name="nationalTaxNo" class="easyui-validatebox"  /></td>
 				</tr>
 			</table>
 		</form>

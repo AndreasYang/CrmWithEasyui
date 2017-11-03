@@ -52,4 +52,10 @@ public class dataDicController {
 	public List<DataDic> findDataDicName(){
 		return dataDicService.findDataDicName();
 	}
+	
+	@RequestMapping("/getCustomerLevel")
+	@ResponseBody
+	public List<DataDic> getCustomerLevel(){
+		return dataDicService.getCustomerLevel();
+	}
 }

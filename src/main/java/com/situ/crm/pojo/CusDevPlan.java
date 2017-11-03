@@ -35,7 +35,7 @@ public class CusDevPlan {
      *
      * @mbggenerated Mon Oct 30 14:01:58 CST 2017
      */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date planDate;
 
     /**

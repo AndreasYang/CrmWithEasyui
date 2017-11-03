@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Customer;
+import com.situ.crm.pojo.CustomerLinkman;
 import com.situ.crm.service.ICustomerService;
 
 @Controller
@@ -52,5 +53,15 @@ public class customerController {
 		return customerService.update(customer);
 	}
 	
-
+	@RequestMapping("/customerLinkMan")
+	public String customerLinkMan(){
+		return "customer_linkman";
+	}
+	
+	@RequestMapping("/findCustomerById")
+	@ResponseBody
+	public ServerResponse findCustomerById(Integer id){
+		return customerService.findCustomerById(id);
+	}
+		
 }

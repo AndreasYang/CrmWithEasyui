@@ -91,4 +91,11 @@ public class saleChanceController {
 	public ServerResponse findById(Integer id){
 		return saleChanceService.findById(id);
 	}
+	
+	@RequestMapping("/updateDevResult")
+	@ResponseBody
+	public ServerResponse updateDevResult(Integer saleChanceId, Integer devResult){
+		return saleChanceService.updateDevResult(saleChanceId,devResult);
+		
+	}
 }

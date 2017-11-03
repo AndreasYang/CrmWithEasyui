@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
-import com.situ.crm.pojo.CusDevPlan;
-import com.situ.crm.service.ICusDevPlanService;
+import com.situ.crm.pojo.CustomerLinkman;
+import com.situ.crm.service.ICustomerLinkmanService;
 
 @Controller
-@RequestMapping("/cusDevPlan")
-public class cusDevPlanController {
+@RequestMapping("/customerLinkman")
+public class customerLinkManController {
 	@InitBinder 
 	public void initBinder(WebDataBinder binder) { 
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -30,46 +30,46 @@ public class cusDevPlanController {
 	}
 	
 	@Autowired
-	private ICusDevPlanService cusDevPlanService;
+	private ICustomerLinkmanService customerLinkmanService;
 	
 	@RequestMapping("/index")
 	public String index(){
-		return "cus_dev_plan_item";
+		return "customer_linkman";
 	}
 	
-	@RequestMapping("/cusDevPlan")
-	public String cusDevPlan(){
+	@RequestMapping("/customerLinkman")
+	public String customerLinkman(){
 		return "cus_dev_plan";
 	}
 	
 	@RequestMapping("/findAll")
 	@ResponseBody
-	public EasyUIDataGrideResult findAll(Integer page, Integer rows, CusDevPlan cusDevPlan) {
-		return cusDevPlanService.findAllWithoutDate(page, rows, cusDevPlan);
+	public EasyUIDataGrideResult findAll(Integer page, Integer rows, CustomerLinkman customerLinkman) {
+		return customerLinkmanService.findAllWithoutDate(page, rows, customerLinkman);
 	}
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public ServerResponse add(CusDevPlan cusDevPlan){
-		return cusDevPlanService.add(cusDevPlan);
+	public ServerResponse add(CustomerLinkman customerLinkman){
+		return customerLinkmanService.add(customerLinkman);
 	}
 	
 	@RequestMapping("/delete")
 	@ResponseBody
 	public ServerResponse delete(String ids){
-		return cusDevPlanService.delete(ids);
+		return customerLinkmanService.delete(ids);
 	}
 	
 	@RequestMapping("/deleteById")
 	@ResponseBody
 	public ServerResponse deleteById(Integer id){
-		return cusDevPlanService.deleteById(id);
+		return customerLinkmanService.deleteById(id);
 	}
 	
 	@RequestMapping("/update")
 	@ResponseBody
-	public ServerResponse update(CusDevPlan cusDevPlan) {
-		return cusDevPlanService.update(cusDevPlan);
+	public ServerResponse update(CustomerLinkman customerLinkman) {
+		return customerLinkmanService.update(customerLinkman);
 	}
 	
 }
