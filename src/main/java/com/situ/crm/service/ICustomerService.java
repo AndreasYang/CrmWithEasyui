@@ -18,6 +18,6 @@ public interface ICustomerService {
 
 	ServerResponse findCustomerById(Integer id);
 
-
+	void checkCustomerLoss();
 
 }

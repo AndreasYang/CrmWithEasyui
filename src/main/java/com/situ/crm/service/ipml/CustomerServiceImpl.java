@@ -12,10 +12,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
+import com.situ.crm.mapper.CustomerLossMapper;
 import com.situ.crm.mapper.CustomerMapper;
+import com.situ.crm.mapper.CustomerOrderMapper;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
 import com.situ.crm.pojo.CustomerExample.Criteria;
+import com.situ.crm.pojo.CustomerLoss;
+import com.situ.crm.pojo.CustomerOrder;
 import com.situ.crm.service.ICustomerService;
 import com.situ.crm.util.Util;
 
@@ -23,6 +27,12 @@ import com.situ.crm.util.Util;
 public class CustomerServiceImpl implements ICustomerService {
 	@Autowired
 	private CustomerMapper customerMapper;
+	
+	@Autowired
+	private CustomerOrderMapper customerOrderMapper;
+	
+	@Autowired
+	private CustomerLossMapper customerLossMapper;
 
 	@Override
 	public EasyUIDataGrideResult findAll(Integer page, Integer rows, Customer customer) {
@@ -86,6 +96,31 @@ public class CustomerServiceImpl implements ICustomerService {
 			return ServerResponse.createSuccess("查找成功", customer);
 		}
 		return ServerResponse.createError("查找失败");
+	}
+
+	@Override
+	public void checkCustomerLoss() {
+		System.out.println("CustomerServiceImpl.checkCustomerLoss()");
+		//查找流失客户
+		List<Customer> customerList = customerMapper.findLossCustomer();
+		for (Customer customer : customerList) {
+			//实例化CustomerLoss
+			CustomerLoss customerLoss = new CustomerLoss();
+			customerLoss.setCustomerNo(customer.getNum());
+			customerLoss.setCustomerName(customer.getName());
+			customerLoss.setCustomerManager(customer.getManagerName());
+			//查找指定而客户最近的一次订单
+			CustomerOrder customerOrder = customerOrderMapper.findLastOrderByCustomerId(customer.getId());
+			if (customerOrder == null) {
+				customerLoss.setLastOrderTime(null);
+			}else {
+				customerLoss.setLastOrderTime(customerOrder.getOrderDate());
+			}
+			//添加到客户流失表里面
+			customerLossMapper.insert(customerLoss);
+			customer.setStatus(1);
+			customerMapper.updateByPrimaryKey(customer);
+		}
 	}
 
 

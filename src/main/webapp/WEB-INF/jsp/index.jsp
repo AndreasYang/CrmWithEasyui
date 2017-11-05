@@ -25,7 +25,7 @@
 			</div>
 			<div title="客户管理" data-options="iconCls:'icon-user'">
 				<a href="javascript:openTab('客户信息管理','${path}/customer/index.action','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 100%;">客户信息管理</a>
-				<a href="javascript:openTab('客户流失管理','customerLossManage.jsp','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 100%;">客户流失管理</a>
+				<a href="javascript:openTab('客户流失管理','${path}/customerLoss/index.action','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 100%;">客户流失管理</a>
 			</div>
 			<div title="服务管理" data-options="iconCls:'icon-sjzdlbgl'">
 				<a href="javascript:openTab('服务创建','customerServiceCreate.jsp','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 100%;">服务创建</a>
@@ -44,7 +44,7 @@
 				<a href="javascript:openTab('数据字典管理','${path}/dataDic/index.action','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 100%;">数据字典管理</a>
 				<a href="javascript:openTab('产品信息查询','${path}/product/index.action','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 100%;">产品信息查询</a>
 				<a href="javascript:openTab('用户信息管理','${path}/user/index.action','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 100%;">用户信息管理</a>
-			</div>
+			</div> 
 			<div title="系统管理" data-options="iconCls:'icon-item'">
 				<a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 100%;">修改密码</a>
 				<a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 100%;">安全退出</a>

@@ -153,11 +153,11 @@ $(function(){
 	
 	function openCustomerLinkManTab(){
 		var id = $("#datagrid").datagrid("getSelected").id;
-		
 		 window.parent.openTab('联系人管理','${path}/customerLinkman/index.action?customerId='+id,'icon-jwjl');
 	}
-	function openCusDevPlanTab(id){
-		 window.parent.openTab('交往记录管理','${path}/cusDevPlan/index.action?saleChanceId='+id,'icon-jwjl');
+	function openCustomerContactTab(){
+		var id = $("#datagrid").datagrid("getSelected").id;
+		 window.parent.openTab('交往记录管理','${path}/customerContact/index.action?customerId='+id,'icon-jwjl');
 	}
 	function openCusDevPlanTab(id){
 		 window.parent.openTab('历史订单查看','${path}/cusDevPlan/index.action?saleChanceId='+id,'icon-jwjl');
@@ -175,7 +175,7 @@ $(function(){
 			<a href="javascript:openUpdateDialog()" class="easyui-linkbutton" iconCls="icon-edit">修改</a>
 			<a href="javascript:doDelete()" class="easyui-linkbutton" iconCls="icon-remove">删除</a>
 			<a href="javascript:openCustomerLinkManTab()" class="easyui-linkbutton" iconCls="icon-jwjl">联系人管理</a>
-			<a href="javascript:openCusDevPlanTab()" class="easyui-linkbutton" iconCls="icon-jwjl">交往记录管理</a>
+			<a href="javascript:openCustomerContactTab()" class="easyui-linkbutton" iconCls="icon-jwjl">交往记录管理</a>
 			<a href="javascript:openCusDevPlanTab()" class="easyui-linkbutton" iconCls="icon-jwjl">历史订单查看</a>
 		</div>
 		<div>
