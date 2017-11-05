@@ -35,10 +35,10 @@
 				<a href="javascript:openTab('服务归档','customerServiceFile.jsp','icon-fwgd')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwgd'" style="width: 100%;">服务归档</a>
 			</div>
 			<div title="统计报表" data-options="iconCls:'icon-lsdd'">
-				<a href="javascript:openTab('客户贡献分析','khgxfx.jsp','icon-khgxfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgxfx'" style="width: 100%;">客户贡献分析</a>
-				<a href="javascript:openTab('客户构成分析','khgcfx.jsp','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 100%;">客户构成分析</a>
-				<a href="javascript:openTab('客户服务分析','khfwfx.jsp','icon-khfwfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khfwfx'" style="width: 100%;">客户服务分析</a>
-				<a href="javascript:openTab('客户流失分析','khlsfx.jsp','icon-khlsfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsfx'" style="width: 100%;">客户流失分析</a>
+				<a href="javascript:openTab('客户贡献分析','${path}/customer/getCustomerContributePage.action','icon-khgxfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgxfx'" style="width: 100%;">客户贡献分析</a>
+				<a href="javascript:openTab('客户构成分析','${path}/customer/getCustomerConstitutePage.action','icon-khgcfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 100%;">客户构成分析</a>
+				<a href="javascript:openTab('客户服务分析','${path}/customer/getCustomerServiceTypePage.action','icon-khfwfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khfwfx'" style="width: 100%;">客户服务分析</a>
+				<a href="javascript:openTab('客户流失分析','${path}/customerLoss/index.action','icon-khlsfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsfx'" style="width: 100%;">客户流失分析</a>
 			</div>
 			<div title="基础数据管理" data-options="iconCls:'icon-tjbb'">
 				<a href="javascript:openTab('数据字典管理','${path}/dataDic/index.action','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 100%;">数据字典管理</a>

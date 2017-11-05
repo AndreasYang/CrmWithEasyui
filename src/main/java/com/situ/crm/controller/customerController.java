@@ -12,6 +12,8 @@ import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerLinkman;
 import com.situ.crm.service.ICustomerService;
+import com.situ.crm.vo.CustomerConstitue;
+import com.situ.crm.vo.CustomerContribute;
 
 @Controller
 @RequestMapping("/customer")
@@ -63,5 +65,41 @@ public class customerController {
 	public ServerResponse findCustomerById(Integer id){
 		return customerService.findCustomerById(id);
 	}
-		
+	
+	@RequestMapping("/getCustomerContributePage")
+	public String getCustomerContributePage() {
+		return "customer_contribute";
+	}
+	
+	//客户贡献
+	@RequestMapping("/findCustomerContribute")
+	@ResponseBody
+	public EasyUIDataGrideResult findCustomerContribute(Integer page, Integer rows, CustomerContribute customerContribute) {
+		return customerService.findCustomerContribute(page, rows, customerContribute);
+	}
+	
+	
+	@RequestMapping("/getCustomerConstitutePage")
+	public String getCustomerConstitutePage() {
+		return "customer_constitute";
+	}
+	
+	//客户构成
+	@RequestMapping("/findCustomerConstitute")
+	@ResponseBody
+	public ServerResponse findCustomerConstitute(){
+		return customerService.findCustomerConstitute();
+	}
+	
+	@RequestMapping("/getCustomerServiceTypePage")
+	public String getCustomerServiceTypePage() {
+		return "customer_servicetype";
+	}
+	
+	//客户服务分析
+	@RequestMapping("/findCustomerServiceType")
+	@ResponseBody
+	public ServerResponse findCustomerServiceType(){
+		return customerService.findCustomerServiceType();
+	}
 }

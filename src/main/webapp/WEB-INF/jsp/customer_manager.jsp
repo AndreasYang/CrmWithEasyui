@@ -41,7 +41,13 @@ $(function(){
 			     {field:'bankAccount',title:'开户账号',width:80,align:'center'},
 			     {field:'localTaxNo',title:'地税登记号',width:80,align:'center'},
 			     {field:'nationalTaxNo',title:'国税登记号',width:80,align:'center'},
-			     {field:'status',title:'客户状态',width:80,align:'center'},
+			     {field:'status',title:'客户状态',width:80,align:'center',formatter:function(value,row,index){
+			    	 if(value==0){
+			    	 		return "正常";
+			    	 	}if(value==1){
+			    	 		return "客户流失";
+			    	 	}
+			     }},
 			]]
 	});
 	
@@ -159,7 +165,8 @@ $(function(){
 		var id = $("#datagrid").datagrid("getSelected").id;
 		 window.parent.openTab('交往记录管理','${path}/customerContact/index.action?customerId='+id,'icon-jwjl');
 	}
-	function openCusDevPlanTab(id){
+	function openCusDevPlanTab(){
+		var id = $("#datagrid").datagrid("getSelected").id;
 		 window.parent.openTab('历史订单查看','${path}/cusDevPlan/index.action?saleChanceId='+id,'icon-jwjl');
 	}
 </script>

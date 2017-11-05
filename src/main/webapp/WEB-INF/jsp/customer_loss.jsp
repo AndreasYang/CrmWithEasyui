@@ -38,7 +38,7 @@
 			    	 if(row.status==1){
 			    		 return "客户确认流失";
 			    	 }else{
-			    		 return "<a href='javascript:openCustomerReprieve("+row.id+")'>暂缓流失</a>";
+			    		 return "<a href='javascript:openCustomerLossMeasure("+row.id+")'>暂缓流失</a>";
 			    	 }
 			     }},    
 			]]  
@@ -77,7 +77,8 @@
 	}
 	
 	//可以修改添加开发项
-	function openCusDevPlanTab(id){
+	function openCustomerLossMeasure(){
+		var id = $("#datagrid").datagrid("getSelected").id;
 		 window.parent.openTab('客户开发计划项管理','${path}/cusDevPlan/index.action?customerLossId='+id,'icon-khkfjh');
 	}
 	 
@@ -89,20 +90,9 @@
 	
 	<!-- toolbar 开始 -->
 	<div id="toolbar">
-		<!-- <div>
-			<a class="easyui-linkbutton" href="javascript:openAddDialog()" iconCls="icon-add">添加</a>
-			<a class="easyui-linkbutton" href="javascript:openUpdateDialog()" iconCls="icon-edit">修改</a>
-			<a class="easyui-linkbutton" href="javascript:doDelete()" iconCls="icon-remove">删除</a>
-		</div> -->
 		<div>
 		       客户名称：<input type="text" id="s_customerName"/>
 		       客户经理：<input type="text" id="s_customerManager"/>
-		       客户状态：<select type="text" id="s_status" class="easyui-combobox"
-		     		panelHeight="auto" editable="false">
-		     		<option value="">请选择...</option>	
- 					<option value="0">暂缓流失</option>
- 					<option value="1">确认流失</option>	
-		     	</select>
 		  <a href="javascript:doSearch();" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
 		</div>
 	</div>

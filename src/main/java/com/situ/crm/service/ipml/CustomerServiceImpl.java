@@ -2,7 +2,9 @@ package com.situ.crm.service.ipml;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ import com.situ.crm.pojo.CustomerLoss;
 import com.situ.crm.pojo.CustomerOrder;
 import com.situ.crm.service.ICustomerService;
 import com.situ.crm.util.Util;
+import com.situ.crm.vo.CustomerConstitue;
+import com.situ.crm.vo.CustomerContribute;
+import com.situ.crm.vo.CustomerServiceType;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService {
@@ -66,6 +71,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
 		String num = "KH"+simpleDateFormat.format(date);
 		customer.setNum(num);
+		customer.setStatus(0);
 		if (customerMapper.insert(customer) > 0) {
 			return ServerResponse.createSuccess("添加成功");
 		}
@@ -123,6 +129,44 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 	}
 
+	@Override
+	public EasyUIDataGrideResult findCustomerContribute(Integer page, Integer rows, CustomerContribute customerContribute) {
+		EasyUIDataGrideResult result = new EasyUIDataGrideResult();
+		//1、设置分页 
+		PageHelper.startPage(page, rows);
+		//2、执行查询
+		//rows(分页之后的数据)
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (StringUtils.isNoneBlank(customerContribute.getName())) {
+			map.put("name", customerContribute.getName());
+		}
+		List<CustomerContribute> list = customerMapper.findCustomerContribute(map);
+		//total
+		PageInfo<CustomerContribute> pageInfo = new PageInfo<>(list);
+		int total = (int)pageInfo.getTotal();
+		
+		result.setTotal(total);
+		result.setRows(list);
+		return result;
+	}
+
+	@Override
+	public ServerResponse findCustomerConstitute() {
+		List<CustomerConstitue> customerConstitues = customerMapper.findCustomerConstitute();
+		if (customerConstitues != null) {
+			return ServerResponse.createSuccess("查找成功", customerConstitues);
+		}
+		return ServerResponse.createError("查找失败");
+	}
+
+	@Override
+	public ServerResponse findCustomerServiceType() {
+		List<CustomerServiceType> customerServiceTypes = customerMapper.findCustomerServiceType();
+		if (customerServiceTypes != null) {
+			return ServerResponse.createSuccess("查找成功", customerServiceTypes);
+		}
+		return ServerResponse.createError("查找失败");
+	}
 
 
 }

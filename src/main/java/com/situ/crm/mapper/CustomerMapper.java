@@ -1,8 +1,16 @@
 package com.situ.crm.mapper;
 
+import com.situ.crm.common.EasyUIDataGrideResult;
+import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
+import com.situ.crm.vo.CustomerConstitue;
+import com.situ.crm.vo.CustomerContribute;
+import com.situ.crm.vo.CustomerServiceType;
+
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CustomerMapper {
@@ -96,4 +104,10 @@ public interface CustomerMapper {
 
     //查找最近六个月的流失客户
 	List<Customer> findLossCustomer();
+
+	List<CustomerContribute> findCustomerContribute(Map<String, Object> map);
+
+	List<CustomerConstitue> findCustomerConstitute();
+
+	List<CustomerServiceType> findCustomerServiceType();
 }

@@ -18,7 +18,7 @@ import com.situ.crm.service.ICustomerLossService;
 
 @Controller
 @RequestMapping("/customerLoss")
-public class CustomerLossController {
+public class customerLossController {
 	@InitBinder 
 	public void initBinder(WebDataBinder binder) { 
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
